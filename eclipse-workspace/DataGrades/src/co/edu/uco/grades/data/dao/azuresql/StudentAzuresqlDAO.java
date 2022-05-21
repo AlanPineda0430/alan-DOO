@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import co.edu.uco.grades.crosscutting.exception.GradesException;
+import co.edu.uco.grades.crosscuting.exception.GradesException;
 import co.edu.uco.grades.data.dao.StudentDAO;
 import co.edu.uco.grades.data.dao.connection.ConnectionSQL;
 import co.edu.uco.grades.dto.StudentDTO;

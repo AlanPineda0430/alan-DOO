@@ -13,7 +13,7 @@ public class UtilObject {
 	}
 	
 	public <T> boolean isNull(T object) {
-		return (object == null);
+		return object == null;
 	}
 	
 	public <T> T getDefault(T object, T defaultValue) {
