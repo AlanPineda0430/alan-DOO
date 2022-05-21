@@ -1,29 +1,27 @@
 package co.edu.uco.grades.data.factory;
 
+import java.sql.Connection;
+
 import co.edu.uco.grades.data.dao.StudentDAO;
 
-public interface DAOFactory {
+public abstract class DAOFactory {
 	
-	public static DAOFactory getDAOFactory() {
+	public static DAOFactory getDaoFactory() {
 		return null;
 	}
 	
-	public abstract void openConnection ();
+	protected abstract void openConnection();
 	
-	public abstract void getConnection ();
+	protected abstract Connection getConnection();
 	
-	public abstract void closeConnection ();
+	public abstract void initTransaction();
 	
-	public abstract void commit();
+	public abstract void closeConnection();
 	
-	public abstract void rollback();
+	public abstract void rollbackTransaction();
 	
+	public abstract void commitTransaction();
 	
-	public abstract studentDAO getstudentDAO();
+	public abstract StudentDAO getStudentDAO();
 	
-	
-	
-	
-	
-
 }

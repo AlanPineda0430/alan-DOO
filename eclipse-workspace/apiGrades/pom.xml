@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -8,12 +10,12 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>co.edu.uco.grades.api</groupId>
-	<artifactId>apiGrades</artifactId>
+	<artifactId>ApiGrades</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>apiGrades</name>
-	<description>componente encargado de las apis que seran expuestas por la aplicacion grades </description>
+	<name>ApiGrades</name>
+	<description>Componente de la aplicación encargado de publicar las APIs que serán expuestas por la aplicación web</description>
 	<properties>
-		<java.version>11</java.version>
+		<java.version>17</java.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -32,15 +34,16 @@
 			<artifactId>DTOGrades</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-
+		
 		<dependency>
 			<groupId>co.edu.uco.grades</groupId>
-			<artifactId>DTOGrades</artifactId>
+			<artifactId>BusinessLogicGrades</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		
 		<dependency>
-			<groupId>co.edu.uco.grades</groupId>
-			<artifactId>BussinessLogicGrades</artifactId>
+			<groupId>co.edu.uco.crosscutinggrades</groupId>
+			<artifactId>CrossCutingGrades</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
