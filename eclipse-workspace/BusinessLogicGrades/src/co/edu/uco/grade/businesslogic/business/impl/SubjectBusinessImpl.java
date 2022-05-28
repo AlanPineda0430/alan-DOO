@@ -4,7 +4,7 @@ import java.util.List;
 
 import co.edu.uco.crosscutting.util.object.UtilObject;
 import co.edu.uco.grade.businesslogic.business.SubjectBusiness;
-import co.edu.uco.grades.crosscuting.exception.GradesException;
+import co.edu.uco.grades.crosscutting.exception.GradesException;
 import co.edu.uco.grades.data.factory.DAOFactory;
 import co.edu.uco.grades.dto.SubjectDTO;
 
@@ -14,7 +14,7 @@ public class SubjectBusinessImpl implements SubjectBusiness {
 	
 	public SubjectBusinessImpl() {
 		if(UtilObject.getUtilObject().isNull(daoFactory)) {
-			throw GradesException.buildTechnicalBusinessLogicException("It's not possible create a SubjectBusinessImpl when DAoFactory is null");
+			throw GradesException.buildTechnicalException("It's not possible create a SubjectBusinessImpl when DAoFactory is null");
 		}
 		
 	}

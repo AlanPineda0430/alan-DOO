@@ -15,6 +15,15 @@
 	<properties>
 		<java.version>11</java.version>
 	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -26,39 +35,28 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>co.edu.uco.grades</groupId>
 			<artifactId>DataGrades</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>co.edu.uco.grades</groupId>
 			<artifactId>BusinessLogicGrades</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
-		
-		<dependency>
-			<groupId>co.edu.uco.grades</groupId>
-  			<artifactId>DTOGrades</artifactId>
-  			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>co.edu.uco.grades</groupId>
-  			<artifactId>CrossCuttingGrades</artifactId>
-  			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-	</dependencies>
 
-	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+		<dependency>
+			<groupId>co.edu.uco.grades</groupId>
+			<artifactId>DTOGrades</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+			<groupId>co.edu.uco.crosscutting</groupId>
+			<artifactId>CrossCutting<artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+			</dependency>
+	</dependencies>
 
 </project>

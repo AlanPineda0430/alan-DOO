@@ -8,10 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.edu.uco.grades.crosscuting.exception.GradesException;
+import co.edu.uco.grades.crosscutting.exception.GradesException;
 import co.edu.uco.grades.data.dao.IdTypeDAO;
 import co.edu.uco.grades.data.dao.connection.ConnectionSQL;
 import co.edu.uco.grades.dto.IdTypeDTO;
+import co.edu.uco.grades.dto.SubjectDTO;
 import co.edu.uco.crosscutting.util.numeric.UtilNumeric;
 import co.edu.uco.crosscutting.util.object.UtilObject;
 import co.edu.uco.crosscutting.util.text.UtilText;
@@ -38,14 +39,14 @@ public class IdTypeAzureSqlDAO extends ConnectionSQL implements IdTypeDAO {
 		String sql = "INSERT INTO Subject(id, name) VALUES(?,?)";
 		
 		try(PreparedStatement preparedStatement = getConnection().prepareStatement(sql)){
-			preparedStatement.setString(1, subject.getId());
+			preparedStatement.setInt(1, subject.getId());
 		}catch (SQLException exception){
 			
-			throw GradesException.buildTechnicalException("There was a problem trying to create a new subject registry on sql server", exception);
+			throw GradesException.buildTechnicalDataException("There was a problem trying to create a new subject registry on sql server", exception);
 			
 		}catch (Exception exception) {
 			
-			throw GradesException.buildTechnicalException("There was an unexpected problem trying to create a new subject registry on sql server", exception);
+			throw GradesException.buildTechnicalDataException("There was an unexpected problem trying to create a new subject registry on sql server", exception);
 			
 		}
 		
@@ -56,14 +57,14 @@ public class IdTypeAzureSqlDAO extends ConnectionSQL implements IdTypeDAO {
 String sql = "UPDATE FROM Subject WHERE id = ?";
 		
 		try(PreparedStatement preparedStatement = getConnection().prepareStatement(sql)){
-			preparedStatement.setString(1, subject.getId());
+			preparedStatement.setInt(1, subject.getId());
 		}catch (SQLException exception){
 			
-			throw GradesException.buildTechnicalException("There was a problem trying to update a subject registry on sql server", exception);
+			throw GradesException.buildTechnicalDataException("There was a problem trying to update a subject registry on sql server", exception);
 			
 		}catch (Exception exception) {
 			
-			throw GradesException.buildTechnicalException("There was an unexpected problem trying to update a subject registry on sql server", exception);
+			throw GradesException.buildTechnicalDataException("There was an unexpected problem trying to update a subject registry on sql server", exception);
 			
 		}
 		
@@ -74,14 +75,14 @@ String sql = "UPDATE FROM Subject WHERE id = ?";
 		String sql = "DELETE FROM Subject WHERE id = ?";
 		
 		try(PreparedStatement preparedStatement = getConnection().prepareStatement(sql)){
-			preparedStatement.setString(1, idType.getId());
+			preparedStatement.setInt(1,id);
 		}catch (SQLException exception){
 			
-			throw GradesException.buildTechnicalException("There was a problem trying to delete a subject registry on sql server", exception);
+			throw GradesException.buildTechnicalDataException("There was a problem trying to delete a subject registry on sql server", exception);
 			
 		}catch (Exception exception) {
 			
-			throw GradesException.buildTechnicalException("There was an unexpected problem trying to delete a subject registry on sql server", exception);
+			throw GradesException.buildTechnicalDataException("There was an unexpected problem trying to delete a subject registry on sql server", exception);
 			
 		}
 		
@@ -124,11 +125,11 @@ String sql = "UPDATE FROM Subject WHERE id = ?";
 			
 		}catch (SQLException exception){
 			
-			throw GradesException.buildTechnicalException("There was a problem trying to delete a subject registry on sql server", exception);
+			throw GradesException.buildTechnicalDataException("There was a problem trying to delete a subject registry on sql server", exception);
 			
 		}catch (Exception exception) {
 			
-			throw GradesException.buildTechnicalException("There was an unexpected problem trying to delete a subject registry on sql server", exception);
+			throw GradesException.buildTechnicalDataException("There was an unexpected problem trying to delete a subject registry on sql server", exception);
 			
 		}
 		return results;}
@@ -142,37 +143,33 @@ String sql = "UPDATE FROM Subject WHERE id = ?";
 			
 		} }catch (SQLException exception){
 			
-			throw GradesException.buildTechnicalException("There was a problem trying to recover tyhe subject names on sql server", exception);
+			throw GradesException.buildTechnicalDataException("There was a problem trying to recover tyhe subject names on sql server", exception);
 			
 		}catch (Exception exception) {
 			
-			throw GradesException.buildTechnicalException("There was an unexpected problem trying to delete a subject registry on sql server", exception);
+			throw GradesException.buildTechnicalDataException("There was an unexpected problem trying to delete a subject registry on sql server", exception);
 			
 	}
 	return results;
 
 }
 	
-private List<IdTypeDTO> executeQuery(PreparedStatement preparedStatement){
-	List<SubjectDTO>;
+private List<SubjectDTO> executeQuery(PreparedStatement preparedStatement){
+	List<SubjectDTO> results = new ArrayList<>();
 
-	
-	
-	try(PreparedStatement preparedStatement1 = getConnection().prepareStatement(sb.toString())){
-		for (int index = 0; index < parameters.size(); index++) {
-			preparedStatement1.setObject(index + 1, parameters.get(index));
+
 		}
 		
 		try (ResultSet resultSet = preparedStatement1.executeQuery()){
 		
 	}catch (SQLException exception){
 		
-		throw GradesException.buildTechnicalException("There was a problem trying to delete a subject registry on sql server", exception);
+		throw GradesException.buildTechnicalDataException("There was a problem trying to delete a subject registry on sql server", exception);
 		
 	}catch (Exception exception) {
 		
-		throw GradesException.buildTechnicalException("There was an unexpected problem trying to delete a subject registry on sql server", exception);
-		
+		throw GradesException.buildTechnicalDataException("There was an unexpected problem trying to delete a subject registry on sql server", exception);
+	}
 	}
 }
 private IdTypeDTO assembleDTO(ResultSet resultSet) throws Exception {
@@ -185,11 +182,11 @@ private IdTypeDTO assembleDTO(ResultSet resultSet) throws Exception {
 		
 		}catch (SQLException exception){
 		
-			throw GradesException.buildTechnicalException("There was a problem trying to assemble tyhe subject names on sql server", exception);
+			throw GradesException.buildTechnicalDataException("There was a problem trying to assemble tyhe subject names on sql server", exception);
 		
 		}catch (Exception exception) {
 		
-			throw GradesException.buildTechnicalException("There was an unexpected problem trying to assemble the subject names on sql server", exception);
+			throw GradesException.buildTechnicalDataException("There was an unexpected problem trying to assemble the subject names on sql server", exception);
 		
 		}
 		return dto;

@@ -50,7 +50,7 @@ private static final Byte ZERO = 0;
 	}
 	
 	public <T extends Number> boolean isBetween(T value, T initialValue, T finalValue, boolean includeinitialValue, boolean includeFinalValue) {
-		return includeinitialValue ? isGreatherOrEqualThan(value, initialValue) : isGreatherThan(value, initialValue)
+		return includeinitialValue ? isGreatherOrEqualThan(value, initialValue) : isGreatherOrEqualThan(value, initialValue)
 				&&
 				includeFinalValue ? isLessOrEqualThan(value, finalValue) : isLessThan(value, finalValue);
  	}
