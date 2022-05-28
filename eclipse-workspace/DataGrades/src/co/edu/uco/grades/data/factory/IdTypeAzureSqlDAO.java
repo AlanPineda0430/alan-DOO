@@ -89,7 +89,7 @@ String sql = "UPDATE FROM Subject WHERE id = ?";
 	}
 
 	@Override
-	public List<IdTypeDTO> find(IdTypeDTO subject) {
+	public List<IdTypeDTO> find(IdTypeDTO subject) throws {
 		
 		boolean setWhere = true;
 		List<Object> parameters = new ArrayList<>();
@@ -120,6 +120,7 @@ String sql = "UPDATE FROM Subject WHERE id = ?";
 			for (int index = 0; index < parameters.size(); index++) {
 				preparedStatement.setObject(index + 1, parameters.get(index));
 			}
+		
 			
 			try (ResultSet resultSet = preparedStatement.executeQuery()){
 			
@@ -154,13 +155,10 @@ String sql = "UPDATE FROM Subject WHERE id = ?";
 
 }
 	
-private List<SubjectDTO> executeQuery(PreparedStatement preparedStatement){
+private void executeQuery(PreparedStatement preparedStatement){
 	List<SubjectDTO> results = new ArrayList<>();
 
-
-		}
-		
-		try (ResultSet resultSet = preparedStatement1.executeQuery()){
+		try (ResultSet resultSet = preparedStatement.executeQuery()){
 		
 	}catch (SQLException exception){
 		
@@ -171,7 +169,8 @@ private List<SubjectDTO> executeQuery(PreparedStatement preparedStatement){
 		throw GradesException.buildTechnicalDataException("There was an unexpected problem trying to delete a subject registry on sql server", exception);
 	}
 	}
-}
+
+
 private IdTypeDTO assembleDTO(ResultSet resultSet) throws Exception {
 	
 	IdTypeDTO dto = new IdTypeDTO();

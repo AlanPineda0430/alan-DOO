@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.edu.uco.grades.crosscuting.exception.GradesException;
+import co.edu.uco.grades.crosscutting.exception.GradesException;
 import co.edu.uco.grades.data.dao.SubjectDAO;
 import co.edu.uco.grades.data.dao.connection.ConnectionSQL;
 import co.edu.uco.grades.dto.IdTypeDTO;
@@ -25,11 +25,11 @@ public class SubjectAzureSqlDAO extends ConnectionSQL implements SubjectDAO {
 
 	private List<SubjectDTO> parameters;
 	private Object sb;
-	private SubjectAzureSqlDAO(Connection connection) {
+	private SubjectAzureSqlDAO(Connection connection) throws Exception {
 		super(connection);
 	}
 	
-	public static SubjectDAO build(Connection connection) {
+	public static SubjectDAO build(Connection connection) throws Exception {
 		return new SubjectAzureSqlDAO(connection);
 	}
 
@@ -100,7 +100,7 @@ String sql = "UPDATE FROM Subject WHERE id = ?";
 		
 		if(!UtilObject.getUtilObject().isNull(subject)) {
 			
-			if(UtilNumeric.getUtilNumeric().isGreaterThan(null, null)) {
+			if(UtilNumeric.getUtilNumeric().isGreatherOrEqualThan(null, null)) {
 				sb.append("WHERE id= ? ");
 				setWhere = false;
 				

@@ -15,7 +15,7 @@ public class SessionDTO {
 		setCourse (course);
 		setDate (date);
 	}
-	private int getId() {
+	public int getId() {
 		return id;
 	}
 	private void setId(int id) {

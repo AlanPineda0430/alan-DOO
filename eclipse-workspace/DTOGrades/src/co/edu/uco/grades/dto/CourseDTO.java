@@ -21,7 +21,7 @@ public class CourseDTO {
 		setInitialDate (initialDate);
 		setFinalDate (finalDate);
 	}
-	private int getId() {
+	public int getId() {
 		return id;
 	}
 	private void setId(int id) {

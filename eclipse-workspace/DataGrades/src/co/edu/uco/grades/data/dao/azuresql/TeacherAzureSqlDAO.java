@@ -4,19 +4,18 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-import co.edu.uco.crosscutting.exception.GeneralException;
-import co.edu.uco.grades.crosscuting.exception.GradesException;
+import co.edu.uco.grades.crosscutting.exception.GradesException;
 import co.edu.uco.grades.data.dao.TeacherDAO;
 import co.edu.uco.grades.data.dao.connection.ConnectionSQL;
 import co.edu.uco.grades.dto.TeacherDTO;
 
 	public class TeacherAzureSqlDAO extends ConnectionSQL implements TeacherDAO {
 
-		private TeacherAzureSqlDAO(Connection connection) {
+		private TeacherAzureSqlDAO(Connection connection) throws Exception {
 			super(connection);
 		}
 		
-		public static TeacherDAO build(Connection connection) {
+		public static TeacherDAO build(Connection connection) throws Exception {
 			return new TeacherAzureSqlDAO(connection);
 		}
 

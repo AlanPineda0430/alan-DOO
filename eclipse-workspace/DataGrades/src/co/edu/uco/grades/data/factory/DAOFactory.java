@@ -24,5 +24,10 @@ public abstract class DAOFactory {
 	public abstract void commitTransaction();
 	
 	public abstract StudentDAO getStudentDAO();
+
+	public <IdTypeBusines> IdTypeBusines getIdTypeDAO() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 }

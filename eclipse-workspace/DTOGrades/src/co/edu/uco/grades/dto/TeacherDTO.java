@@ -27,7 +27,7 @@ public class TeacherDTO {
 		this.id = id;
 	}
 
-	private String getIdNumber() {
+	public String getIdNumber() {
 		return idNumber;
 	}
 
@@ -35,7 +35,7 @@ public class TeacherDTO {
 		this.idNumber = idNumber;
 	}
 
-	private IdTypeDTO getIdType() {
+	public IdTypeDTO getIdType() {
 		return idType;
 	}
 

@@ -51,6 +51,16 @@ public class GeneralException extends RuntimeException {
 		this.rootException = getUtilObject().getDefault(rootException,
 				new Exception());
 	}
+
+	public static Exception buildTechnicalDataException(String string, Exception exception) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public static Exception buildTechnicalDataException(String string) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 }

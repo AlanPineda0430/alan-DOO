@@ -7,39 +7,45 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.uco.crosscutting.exception.GeneralException;
 import co.edu.uco.crosscutting.util.numeric.UtilNumeric;
 import co.edu.uco.crosscutting.util.object.UtilObject;
 import co.edu.uco.crosscutting.util.text.UtilText;
 import static co.edu.uco.crosscutting.util.text.UtilText.SPACE;
-import co.edu.uco.grades.crosscuting.exception.GradesException;
+import co.edu.uco.grades.crosscutting.exception.GradesException;
 import co.edu.uco.grades.data.dao.IdTypeDAO;
 import co.edu.uco.grades.data.dao.connection.ConnectionSQL;
 import co.edu.uco.grades.dto.IdTypeDTO;
 
 public class IdTypeAzureSqlDAO extends ConnectionSQL implements IdTypeDAO {
 
-	private IdTypeAzureSqlDAO(Connection connection) {
+	private IdTypeAzureSqlDAO(Connection connection) throws Exception {
 		super(connection);
 	}
 
-	public static IdTypeDAO build(Connection connection) {
+	public static IdTypeDAO build(Connection connection) throws Exception {
 		return new IdTypeAzureSqlDAO(connection);
 	}
 
 	@Override
-	public void create(IdTypeDTO idType) {
+	public void create(IdTypeDTO idType) throws Exception {
 		String sql = "INSERT INTO IdType(name) VALUES (?)";
 
-		try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
+		try {
+			try (PreparedStatement preparedStatement = getConnection().prepareStatement(sql)) {
 
-			preparedStatement.setString(1, idType.getName());
+				preparedStatement.setString(1, idType.getName());
 
-			preparedStatement.executeUpdate();
+				preparedStatement.executeUpdate();
 
-		} catch (SQLException exception) {
-			throw GradesException.buildTechnicalDataException("There was a problem trying to create the new IdType on Azure SQL Server", exception);
-		} catch (Exception exception) {
-			throw GradesException.buildTechnicalDataException("An unexpected problem has ocurred trying to create the new IdType on Azure SQL Server", exception);
+			} catch (SQLException exception) {
+				throw GeneralException.buildTechnicalDataException("There was a problem trying to create the new IdType on Azure SQL Server", exception);
+			} catch (Exception exception) {
+				throw GradesException.buildTechnicalDataException("An unexpected problem has ocurred trying to create the new IdType on Azure SQL Server", exception);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 
@@ -99,7 +105,7 @@ String sql = "DELETE FROM IdType WHERE id = ?";
 		
 		if(!UtilObject.getUtilObject().isNull(idType)) {
 			
-			if(UtilNumeric.getUtilNumeric().isGreaterThan(idType.getId(), 0)) {
+			if(UtilNumeric.getUtilNumeric().isGreatherOrEqualThan(idType.getId(), 0)) {
 				
 				sb.append("WHERE id = ? ");
 				parameters.add(idType.getId());

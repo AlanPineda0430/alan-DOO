@@ -53,10 +53,13 @@
 			<artifactId>DTOGrades</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		<dependency>
 			<groupId>co.edu.uco.crosscutting</groupId>
-			<artifactId>CrossCutting<artifactId>
+			<artifactId>CrossCutting</artifactId>
 			<version>0.0.1-SNAPSHOT</version>
-			</dependency>
+		</dependency>
+
+
 	</dependencies>
 
 </project>
